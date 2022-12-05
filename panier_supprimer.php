@@ -9,30 +9,26 @@ catch (Exception $e)
 {
 die('Erreur : ' . $e->getMessage());
 }
-
-echo"<br><br><br><br><br> article :  ";   
-                       
+                      
 if(!empty($_GET)){
-echo ($_GET["ida"]. "<br><br><br><br>".$_SESSION['user']."<br><br>");
-
 $ida=$_GET["ida"];
 $user=$_SESSION['user'];
 }
+
 try
 {
-    $sqlQuery = "INSERT INTO panier VALUES($ida,'$user')";
+    $sqlQuery = "DELETE FROM panier WHERE `panier`.`id` = $ida AND `panier`.`client_email` = '$user'";
     $requete = $db->prepare($sqlQuery);
     $requete->execute();
     $res = $requete->fetchAll();
-    
 }
 catch (Exception $e)
 {
-    header('location:index.php');                                       
+    header('location:panier.php');                                       
 }
 
 
-header('location:index.php');                                       
+header('location:panier.php');                                       
 
 ?>
                     

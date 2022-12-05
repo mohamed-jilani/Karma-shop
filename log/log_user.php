@@ -77,7 +77,7 @@ if(!empty($res)){
 }
 else
 { 
-  header('location:../index.html');      
+  header('location:../login.html');      
 }
 }
  
