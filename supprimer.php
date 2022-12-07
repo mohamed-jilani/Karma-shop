@@ -127,12 +127,7 @@
 							<div class="col-lg-5 col-md-6">
 								<div class="banner-content">
 									<h1>Nike New <br>Collection!</h1>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-									<div class="add-bag d-flex align-items-center">
-										<a class="add-btn" href=""><span class="lnr lnr-cross"></span></a>
-										<span class="add-text text-uppercase">Add to Bag</span>
-									</div>
+									
 								</div>
 							</div>
 							<div class="col-lg-7">
@@ -146,12 +141,7 @@
 							<div class="col-lg-5">
 								<div class="banner-content">
 									<h1>Nike New <br>Collection!</h1>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-									<div class="add-bag d-flex align-items-center">
-										<a class="add-btn" href=""><span class="lnr lnr-cross"></span></a>
-										<span class="add-text text-uppercase">Add to Bag</span>
-									</div>
+									
 								</div>
 							</div>
 							<div class="col-lg-7">
@@ -224,7 +214,7 @@
 				<div class="row justify-content-center">
 					<div class="col-lg-6 text-center">
 						<div class="section-title">
-							<h1>Latest Products</h1>
+							<h1>Supprimer un article</h1>
 							
 						</div>
 					</div>
@@ -233,7 +223,7 @@
 				<div class="row">
 
         <form  action="supprimer.php" method="POST">
-        <h5 class="display-6">Supprimer un article</h5>
+        
       
           <div class="form-group">
             <label for="id">Introduire l'Id du l'article:</label>
@@ -252,7 +242,7 @@ $varid=$_POST['id'];
 //connexion à la base de données
 try
 {
- $db =new PDO('mysql:host=localhost;dbname=vente_enligne;charset=utf8', 
+ $db =new PDO('mysql:host=localhost;dbname=jf;charset=utf8', 
 'root', '');
 }
 catch (Exception $e)
@@ -264,6 +254,7 @@ $sqlQuery = "DELETE FROM produit WHERE id=$varid";
 $requete = $db->prepare($sqlQuery);
 $requete->execute();
 }
+
 ?>
 
                     
