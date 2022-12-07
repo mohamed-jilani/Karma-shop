@@ -127,12 +127,7 @@
 							<div class="col-lg-5 col-md-6">
 								<div class="banner-content">
 									<h1>Nike New <br>Collection!</h1>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-									<div class="add-bag d-flex align-items-center">
-										<a class="add-btn" href=""><span class="lnr lnr-cross"></span></a>
-										<span class="add-text text-uppercase">Add to Bag</span>
-									</div>
+									
 								</div>
 							</div>
 							<div class="col-lg-7">
@@ -146,12 +141,7 @@
 							<div class="col-lg-5">
 								<div class="banner-content">
 									<h1>Nike New <br>Collection!</h1>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-									<div class="add-bag d-flex align-items-center">
-										<a class="add-btn" href=""><span class="lnr lnr-cross"></span></a>
-										<span class="add-text text-uppercase">Add to Bag</span>
-									</div>
+									
 								</div>
 							</div>
 							<div class="col-lg-7">
@@ -166,54 +156,6 @@
 		</div>
 	</section>
 	<!-- End banner Area -->
-	<!-- start features Area -->
-	<section class="features-area section_gap">
-		<div class="container">
-			<div class="row features-inner">
-				<!-- single features -->
-				<div class="col-lg-3 col-md-6 col-sm-6">
-					<div class="single-features">
-						<div class="f-icon">
-							<img src="img/features/f-icon1.png" alt="">
-						</div>
-						<h6>Free Delivery</h6>
-						<p>Free Shipping on all order</p>
-					</div>
-				</div>
-				<!-- single features -->
-				<div class="col-lg-3 col-md-6 col-sm-6">
-					<div class="single-features">
-						<div class="f-icon">
-							<img src="img/features/f-icon2.png" alt="">
-						</div>
-						<h6>Return Policy</h6>
-						<p>Free Shipping on all order</p>
-					</div>
-				</div>
-				<!-- single features -->
-				<div class="col-lg-3 col-md-6 col-sm-6">
-					<div class="single-features">
-						<div class="f-icon">
-							<img src="img/features/f-icon3.png" alt="">
-						</div>
-						<h6>24/7 Support</h6>
-						<p>Free Shipping on all order</p>
-					</div>
-				</div>
-				<!-- single features -->
-				<div class="col-lg-3 col-md-6 col-sm-6">
-					<div class="single-features">
-						<div class="f-icon">
-							<img src="img/features/f-icon4.png" alt="">
-						</div>
-						<h6>Secure Payment</h6>
-						<p>Free Shipping on all order</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- end features Area -->
 
 
   <!-- first product Area -->
@@ -224,7 +166,7 @@
 				<div class="row justify-content-center">
 					<div class="col-lg-6 text-center">
 						<div class="section-title">
-							<h1>Latest Products</h1>
+							<h1>Modifier un article</h1>
 							
 						</div>
 					</div>
@@ -232,12 +174,16 @@
 
 				<div class="row">
         <form  action="modifier.php" method="POST">
-        <h5 class="display-6">Modifier un article</h5>
       
           <div class="form-group">
             <label for="IdLocation">Introduire l'Id du l'article:</label>
             <input type="text" size="30" name="id" class="form-control"><br>
           </div>
+		  <div class="form-group">
+            <label for="IdLocation">ajouter une image:</label>
+            <input type="text" size="30" name="img" class="form-control"><br>
+          </div>
+      
       
           <div class="form-group">
             <label for="IdClient">Introduire la reference de l'article:</label>
@@ -269,25 +215,22 @@
 							<?php
 							if (!empty($_POST))
 							{								
-																	
-								$varp=$_POST['id'];
-								$varm=$_POST['ref'];
-								$varmo=$_POST['nom_produit'];
-								$varc=$_POST['qtt_p'];
-								$varb=$_POST['prix_p'];
-								$vart=$_POST['description'];
-								
+								$id=$_POST['id'];									
+								$img=$_POST['img'];
+								$ref=$_POST['ref'];
+								$nom=$_POST['nom_produit'];
+								$qtte=$_POST['qtt_p'];
+								$prix=$_POST['prix_p'];
+								$desc=$_POST['description'];
+															
 								
 								//connexion à la base de données
 							try
-							{ $db =new PDO('mysql:host=localhost;dbname=vente_enligne;charset=utf8', 
-							'root', ''); }
+							{ $db =new PDO('mysql:host=localhost;dbname=jf;charset=utf8','root', ''); }
 							catch (Exception $e)
 							{ die('Erreur : ' . $e->getMessage());}
 							// execution de la requete de modification
-							$sqlQuery = "UPDATE produit SET 
-							ref='$varm',nom_produit='$varmo',qtt_p='$varc',prix_p='$varb',description='$vart'
-							WHERE id=$varp";
+							$sqlQuery = "UPDATE `produit` SET `ref` = '$ref', `img` = '$img', `nom_produit` = '$nom', `prix_p` = '$prix', `description` = '$desc' WHERE `produit`.`id` = $id";
 							$requete = $db->prepare($sqlQuery);
 							$requete->execute();
 							}

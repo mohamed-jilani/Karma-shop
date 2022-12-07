@@ -31,9 +31,12 @@ $sqlQuery ="INSERT INTO `client` (`cin`, `name`, `email`, `phone`, `country`, `a
 }
 $sqlQuery2 ="INSERT INTO `compte` (`email`, `pass`) VALUES ('$email',$cin )";
 
+
 $requete = $db->prepare($sqlQuery);
 $requete->execute();
 
+$requete = $db->prepare($sqlQuery2);
+$requete->execute();
 header('location:login.html'); 
 }
 else
